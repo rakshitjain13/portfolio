@@ -1,0 +1,40 @@
+.about .content h3 {
+  font-weight: 700;
+  font-size: 26px;
+  color: #728394;
+}
+
+.about .content ul {
+  list-style: none;
+  padding: 0;
+}
+
+.about .content ul li {
+  padding-bottom: 10px;
+  color: #f1d4d4;
+}
+.about .content ul li strong{
+    color: #c060a1;
+}
+
+.about .content ul i {
+  font-size: 20px;
+  -webkit-text-stroke: 2px;
+  font-weight: 100;
+  padding-right: 2px;
+  color: #f1d4d4;
+}
+.about .content p{
+    color: #f1d4d4;
+}
+.about .content p:last-child {
+  margin-bottom: 0;
+}
+@media (min-width: 992px) {
+  .about {
+    margin-left: 100px;
+  }
+}
+.about .content h3{
+    color: #c060a1;
+}
