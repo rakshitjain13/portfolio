@@ -3,6 +3,8 @@ import IngenuityLarge from'../images/ingenuity_large1.png';
 import IngenuitySmall from "../images/ingenuity_small.png";
 import InfinityLarge from '../images/InfinityLarge.png';
 import InfinitySmall from '../images/InfinitySmall.png';
+import YoGameLarge from '../images/YoGameLarge.png';
+import YoGameSmall from "../images/YoGameSmall.png";
 import './project.css';
 export default function Projects() {
 	return (
@@ -12,46 +14,89 @@ export default function Projects() {
 					<div className="section-title project" data-aos="fade-up">
 						<h2>Projects</h2>
 					</div>
-					<div className="row" data-aos="fade-up">
-						<div className="col-md-8 img-row">
-							<div className="img-1">
-								<img src={IngenuityLarge} className="img-fluid" alt="..." />
-							</div>
-							<div className="img-2" data-aos="fade-up" data-aos-delay="50">
-								<img src={IngenuitySmall} className="img-fluid" alt="..." />
-							</div>
-						</div>
-						<div className=" fh5co-text col-md-4">
-							<h2>A Blog Site</h2>
+					<div
+						className="row flex-column-reverse flex-md-row"
+						data-aos="fade-up"
+					>
+						<div className=" fh5co-text col-md-4 ">
+							<h2>A Yoga Automated instructor </h2>
 							<p>
-								Ingenuity, a website for student media body ,IIIT Pune.It uses
-								rich text editor for making your own blog.<b>React</b> as
-								frontend,<b>Express</b> as an backend and <b>mongodb</b> Atlas
-								for storage has been used here.
+								As we all are aware,these are tough times ,people are stuck in
+								their homes because of the pandemic,devoid of proper resources
+								to keep a good track of their health. We bring to their aid this
+								project called 'YoGame'. 'YoGame' is an automated yoga
+								instructor that enables people to practice Yoga and exercise in
+								the calm environment of their homes without having to go and
+								risk their health outside.
 							</p>
 							<p>
 								<a
-									href="http://ingenuity.iiitp.ac.in/"
+									href="https://yoga-pose-game.web.app/"
 									target="__blank"
 									class="btn btn-light btn-outline transition"
 								>
 									Live
 								</a>
 								<a
-									href="https://github.com/rakshitjain13/ingenuity-iiitp"
+									href="https://github.com/rakshitjain13/Yogame"
 									target="__blank"
 									class="btn btn-light btn-outline transition ml-1"
 								>
-									Frontend Code
-								</a>
-								<a
-									href="https://github.com/Mukhrit/Backend-Student-Media-Body-"
-									target="__blank"
-									class="btn btn-light btn-outline transition ml-1"
-								>
-									backend Code
+									Source Code
 								</a>
 							</p>
+						</div>
+						<div className="col-md-8 img-row">
+							<div className="img-1">
+								<img src={YoGameLarge} className="img-fluid" alt="..." />
+							</div>
+							<div className="img-2" data-aos="fade-up" data-aos-delay="50">
+								<img src={YoGameSmall} className="img-fluid" alt="..." />
+							</div>
+						</div>
+					</div>
+					<div className="new-row">
+						<div className="row" data-aos="fade-up">
+							<div className="col-md-8 img-row">
+								<div className="img-1">
+									<img src={IngenuityLarge} className="img-fluid" alt="..." />
+								</div>
+								<div className="img-2" data-aos="fade-up" data-aos-delay="50">
+									<img src={IngenuitySmall} className="img-fluid" alt="..." />
+								</div>
+							</div>
+							<div className=" fh5co-text col-md-4">
+								<h2>A Blog Site</h2>
+								<p>
+									Ingenuity, a website for student media body ,IIIT Pune.It uses
+									rich text editor for making your own blog.<b>React</b> as
+									frontend,<b>Express</b> as an backend and <b>mongodb</b> Atlas
+									for storage has been used here.
+								</p>
+								<p>
+									<a
+										href="http://ingenuity.iiitp.ac.in/"
+										target="__blank"
+										class="btn btn-light btn-outline transition"
+									>
+										Live
+									</a>
+									<a
+										href="https://github.com/rakshitjain13/ingenuity-iiitp"
+										target="__blank"
+										class="btn btn-light btn-outline transition ml-1"
+									>
+										Frontend Code
+									</a>
+									<a
+										href="https://github.com/Mukhrit/Backend-Student-Media-Body-"
+										target="__blank"
+										class="btn btn-light btn-outline transition ml-1"
+									>
+										backend Code
+									</a>
+								</p>
+							</div>
 						</div>
 					</div>
 					<div className="new-row">

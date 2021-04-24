@@ -15,12 +15,16 @@ import {
 	animateScroll as scroll,
 	scrollSpy,
 } from "react-scroll";
-
-
+import Preloader from "./logoR.png";
+import background from "./pexels-alex-conchillos-3648850.jpg";
 
 class App extends React.Component {
-  componentDidMount(){
-	  Events.scrollEvent.register("begin", function (to, element) {
+	constructor(...props) {
+		super(...props);
+		this.state = { isLoading: true };
+	}
+	componentDidMount() {
+		Events.scrollEvent.register("begin", function (to, element) {
 			console.log("begin", arguments);
 		});
 
@@ -30,127 +34,147 @@ class App extends React.Component {
 
 		scrollSpy.update();
 
-			// Hero typed
-			if ($(".typed").length) {
-				var typed_strings = $(".typed").data("typed-items");
-				typed_strings = typed_strings.split(",");
-				// eslint-disable-next-line no-undef
-				new Typed(".typed", {
-					strings: typed_strings,
-					loop: true,
-					typeSpeed: 100,
-					backSpeed: 50,
-					backDelay: 2000,
-				});
+		// Hero typed
+		if ($(".typed").length) {
+			var typed_strings = $(".typed").data("typed-items");
+			typed_strings = typed_strings.split(",");
+			// eslint-disable-next-line no-undef
+			new Typed(".typed", {
+				strings: typed_strings,
+				loop: true,
+				typeSpeed: 100,
+				backSpeed: 50,
+				backDelay: 2000,
+			});
+		}
+
+		// Smooth scroll for the navigation menu and links with .scrollto classes
+
+		// Activate smooth scroll on page load with hash links in the url
+
+		$(document).on("click", ".mobile-nav-toggle", function (e) {
+			$("body").toggleClass("mobile-nav-active");
+			$(".mobile-nav-toggle i").toggleClass(
+				"icofont-navigation-menu icofont-close"
+			);
+		});
+
+		$(document).click(function (e) {
+			var container = $(".mobile-nav-toggle");
+			if (!container.is(e.target) && container.has(e.target).length === 0) {
+				if ($("body").hasClass("mobile-nav-active")) {
+					$("body").removeClass("mobile-nav-active");
+					$(".mobile-nav-toggle i").toggleClass(
+						"icofont-navigation-menu icofont-close"
+					);
+				}
 			}
+		});
 
-			// Smooth scroll for the navigation menu and links with .scrollto classes
-		
+		// Navigation active state on scroll
+		var nav_sections = $("section");
+		var main_nav = $(".nav-menu, #mobile-nav");
 
-			// Activate smooth scroll on page load with hash links in the url
+		$(window).on("scroll", function () {
+			var cur_pos = $(this).scrollTop() + 300;
 
+			nav_sections.each(function () {
+				var top = $(this).offset().top,
+					bottom = top + $(this).outerHeight();
 
-			$(document).on("click", ".mobile-nav-toggle", function (e) {
-				$("body").toggleClass("mobile-nav-active");
-				$(".mobile-nav-toggle i").toggleClass(
-					"icofont-navigation-menu icofont-close"
-				);
-			});
-
-			$(document).click(function (e) {
-				var container = $(".mobile-nav-toggle");
-				if (!container.is(e.target) && container.has(e.target).length === 0) {
-					if ($("body").hasClass("mobile-nav-active")) {
-						$("body").removeClass("mobile-nav-active");
-						$(".mobile-nav-toggle i").toggleClass(
-							"icofont-navigation-menu icofont-close"
-						);
+				if (cur_pos >= top && cur_pos <= bottom) {
+					if (cur_pos <= bottom) {
+						main_nav.find("li").removeClass("active");
 					}
+					main_nav
+						.find('a[href="#' + $(this).attr("id") + '"]')
+						.parent("li")
+						.addClass("active");
+				}
+				if (cur_pos < 200) {
+					$(".nav-menu ul:first li:first").addClass("active");
 				}
 			});
+		});
 
-			// Navigation active state on scroll
-			var nav_sections = $("section");
-			var main_nav = $(".nav-menu, #mobile-nav");
+		// Back to top button
+		$(window).scroll(function () {
+			if ($(this).scrollTop() > 100) {
+				$(".back-to-top").fadeIn("slow");
+			} else {
+				$(".back-to-top").fadeOut("slow");
+			}
+		});
 
-			$(window).on("scroll", function () {
-				var cur_pos = $(this).scrollTop() + 300;
+		// jQuery counterUp
 
-				nav_sections.each(function () {
-					var top = $(this).offset().top,
-						bottom = top + $(this).outerHeight();
+		// Skills section
 
-					if (cur_pos >= top && cur_pos <= bottom) {
-						if (cur_pos <= bottom) {
-							main_nav.find("li").removeClass("active");
-						}
-						main_nav
-							.find('a[href="#' + $(this).attr("id") + '"]')
-							.parent("li")
-							.addClass("active");
-					}
-					if (cur_pos < 200) {
-						$(".nav-menu ul:first li:first").addClass("active");
-					}
-				});
-			});
+		// Init AOS
 
-			// Back to top button
-			$(window).scroll(function () {
-				if ($(this).scrollTop() > 100) {
-					$(".back-to-top").fadeIn("slow");
-				} else {
-					$(".back-to-top").fadeOut("slow");
+		// Porfolio isotope and filter
+
+		// Initiate aos_init() function
+
+		// Testimonials carousel (uses the Owl Carousel library)
+
+		// Portfolio details carousel
+		setTimeout(
+			function () {
+				this.setState({ isLoading: false });
+			}.bind(this),
+			2000
+		);
+	}
+	componentWillUnmount() {
+		Events.scrollEvent.remove("begin");
+		Events.scrollEvent.remove("end");
+	}
+	scrollToTop() {
+		scroll.scrollToTop();
+	}
+	render() {
+		return (
+			<div>
+				<img src={background} className="app-img"></img>
+				{
+					// eslint-disable-next-line jsx-a11y/alt-text
+					this.state.isLoading ? (
+						<div className="preloader ">
+							<div className="preloader-img">
+								<img src={Preloader} className="img-fluid"></img>
+							</div>
+						</div>
+					) : (
+						<div className="preloader fadeOut">
+							<div className="preloader-img">
+								<img src={Preloader} className="img-fluid"></img>
+							</div>
+						</div>
+					)
 				}
-			});
-
-			// jQuery counterUp
-
-
-			// Skills section
-		
-
-			// Init AOS
-
-			// Porfolio isotope and filter
-		
-				// Initiate aos_init() function
-
-			// Testimonials carousel (uses the Owl Carousel library)
-		
-			// Portfolio details carousel
-		
-  }
-   componentWillUnmount() {
-    Events.scrollEvent.remove('begin');
-    Events.scrollEvent.remove('end');
-  }
-   scrollToTop() {
-    scroll.scrollToTop();
-  }
-  render(){
-  return (
-		<Element name="App" className="App">
-			<Front />
-			<Element name="About">
-				<About />
-			</Element>
-			<Element name="Skills">
-				<Skills />
-			</Element>
-			<Element name="Projects">
-				<Projects />
-			</Element>
-			<Element name="Contactus">
-				<Contactus />
-			</Element>
-			<Footer />
-			<Link to="App" activeClass="active" class="back-to-top" smooth={true}>
-				<i class="fa fa-arrow-up"></i>
-			</Link>
-		</Element>
-	);
-  }
+				<Element name="App" className="App">
+					<Front />
+					<Element name="About">
+						<About />
+					</Element>
+					<Element name="Skills">
+						<Skills />
+					</Element>
+					<Element name="Projects">
+						<Projects />
+					</Element>
+					<Element name="Contactus">
+						<Contactus />
+					</Element>
+					<Footer />
+					<Link to="App" activeClass="active" class="back-to-top" smooth={true}>
+						<i class="fa fa-arrow-up"></i>
+					</Link>
+				</Element>
+			</div>
+		);
+	}
 }
 
 export default App;
