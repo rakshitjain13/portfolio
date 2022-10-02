@@ -35,18 +35,18 @@ class App extends React.Component {
 		scrollSpy.update();
 
 		// Hero typed
-		if ($(".typed").length) {
-			var typed_strings = $(".typed").data("typed-items");
-			typed_strings = typed_strings.split(",");
-			// eslint-disable-next-line no-undef
-			new Typed(".typed", {
-				strings: typed_strings,
-				loop: true,
-				typeSpeed: 100,
-				backSpeed: 50,
-				backDelay: 2000,
-			});
-		}
+		// if ($(".typed").length) {
+		// 	var typed_strings = $(".typed").data("typed-items");
+		// 	typed_strings = typed_strings.split(",");
+		// 	// eslint-disable-next-line no-undef
+		// 	new Typed(".typed", {
+		// 		strings: typed_strings,
+		// 		loop: true,
+		// 		typeSpeed: 100,
+		// 		backSpeed: 50,
+		// 		backDelay: 2000,
+		// 	});
+		// }
 
 		// Smooth scroll for the navigation menu and links with .scrollto classes
 
@@ -135,45 +135,45 @@ class App extends React.Component {
 	}
 	render() {
 		return (
-			<div>
-				<img src={background} className="app-img"></img>
-				{
-					// eslint-disable-next-line jsx-a11y/alt-text
-					this.state.isLoading ? (
-						<div className="preloader ">
-							<div className="preloader-img">
-								<img src={Preloader} className="img-fluid"></img>
-							</div>
-						</div>
-					) : (
-						<div className="preloader fadeOut">
-							<div className="preloader-img">
-								<img src={Preloader} className="img-fluid"></img>
-							</div>
-						</div>
-					)
-				}
-				<Element name="App" className="App">
-					<Front />
-					<Element name="About">
-						<About />
-					</Element>
-					<Element name="Skills">
-						<Skills />
-					</Element>
-					<Element name="Projects">
-						<Projects />
-					</Element>
-					<Element name="Contactus">
-						<Contactus />
-					</Element>
-					<Footer />
-					<Link to="App" activeClass="active" class="back-to-top" smooth={true}>
-						<i class="fa fa-arrow-up"></i>
-					</Link>
-				</Element>
-			</div>
-		);
+      <div>
+        <img src={background} className="app-img" alt="..."></img>
+        {
+          // eslint-disable-next-line jsx-a11y/alt-text
+          this.state.isLoading ? (
+            <div className="preloader ">
+              <div className="preloader-img">
+                <img src={Preloader} className="img-fluid" alt="..."></img>
+              </div>
+            </div>
+          ) : (
+            <div className="preloader fadeOut">
+              <div className="preloader-img">
+                <img src={Preloader} className="img-fluid" alt="..."></img>
+              </div>
+            </div>
+          )
+        }
+        <Element name="App" className="App">
+          <Front />
+          <Element name="About">
+            <About />
+          </Element>
+          <Element name="Skills">
+            <Skills />
+          </Element>
+          <Element name="Projects">
+            <Projects />
+          </Element>
+          <Element name="Contactus">
+            <Contactus />
+          </Element>
+          <Footer />
+          <Link to="App" activeClass="active" class="back-to-top" smooth={true}>
+            <i class="fa fa-arrow-up"></i>
+          </Link>
+        </Element>
+      </div>
+    );
 	}
 }
 
