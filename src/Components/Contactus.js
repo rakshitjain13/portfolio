@@ -77,20 +77,20 @@ export default class Contactus extends Component {
 	};
 	submit = (e) => {
 		e.preventDefault();
-		// if (this.state.formValid) {
-		// 	axios
-		// 		.post(
-		// 			"https://cors-anywhere.herokuapp.com/https://www.elformo.com/forms/e470a1dd-6b8b-4f27-8da7-4ea501c3c8d0",
-		// 			{
-		// 				name: this.state.username,
-		// 				email: this.state.email,
-		// 				message: this.state.message,
-		// 			}
-		// 		)
-		// 		.then((res) => res.data)
-		// 		.catch((err) => console.log(err));
-		// 	alert("Thank You for your valuable time.");
-		// }
+		if (this.state.formValid) {
+			axios
+				.post(
+					"https://cors-anywhere.herokuapp.com/https://www.elformo.com/forms/e470a1dd-6b8b-4f27-8da7-4ea501c3c8d0",
+					{
+						name: this.state.username,
+						email: this.state.email,
+						message: this.state.message,
+					}
+				)
+				.then((res) => res.data)
+				.catch((err) => console.log(err));
+			alert("Thank You for your valuable time.");
+		}
 	};
 
 	render() {
