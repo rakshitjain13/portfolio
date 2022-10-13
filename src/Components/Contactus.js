@@ -78,6 +78,7 @@ export default class Contactus extends Component {
 	submit = (e) => {
 		e.preventDefault();
 		alert("Please mail to rakshitdhoka13@gmail.com");
+
 	};
 
 	render() {
