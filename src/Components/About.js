@@ -64,7 +64,7 @@ export default function About() {
                 </div>
                 <div className="d-flex ">
                   <a
-                    href="https://drive.google.com/file/d/1wt8HMaYF0BM0MOA2TPxtrS31PR55OYZr/view?usp=sharing"
+                    href="https://drive.google.com/file/d/1hRLJrWB9U9hoz0IjqjtMmYlvOrtzeqPm/view?usp=sharing"
                     target="_blank"
                     className=" btn btn-lg rounded"
                     style={{
